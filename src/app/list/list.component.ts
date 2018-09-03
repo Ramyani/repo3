@@ -21,7 +21,11 @@ export class ListComponent implements OnInit {
   constructor(private service: DataService) { }
 
   ngOnInit() {
-    // complete this function which searches the customer data & adds them to searchCustomersList
+    this.service.currentSearchText.subscribe(value => {
+      this.searchCustomersList = this.customers.filter(row => (row['name'].includes(value) || row['location'].includes(value)));
+    });
+
+    this.searchCustomersList = this.customers;
   }
 
 }

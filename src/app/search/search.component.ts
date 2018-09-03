@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit {
     });
 
     // write a subsciber/valueChanges function that calls changeSearchText upon value change in the form
+    this.searchForm.controls.searchText.valueChanges.subscribe(value => {
+      this.service.changeSearchText(value);
+    });
   }
-
 }
